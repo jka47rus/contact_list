@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact List</title>
+</head>
+<body>
+<h1>Contact List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contact : ${list}">
+        <td th:text="${contact.id}"></td>
+        <td th:text="${contact.firstName}"></td>
+        <td th:text="${contact.lastName}"></td>
+        <td th:text="${contact.email}"></td>
+        <td th:text="${contact.phone}"></td>
+        <td>
+            <a th:href="@{/contact/edit/{id}(id=${contact.id})}">Edit</a>
+            <a th:href="@{/contact/delete/{id}(id=${contact.id})}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!--Форма-->
+<!--<h2>Create Contact</h2>-->
+<!-- <form th:object="${contact}" th:action="@{/contact/create}" th:method="post">-->
+<!--     <input type="text" placeholder="firstname" th:field="*{firstName}">-->
+<!--     <input type="text" placeholder="lastname" th:field="*{lastName}">-->
+<!--     <input type="text" placeholder="phone" th:field="*{phone}">-->
+<!--     <input type="text" placeholder="email" th:field="*{email}">-->
+<!--    <button type="submit">Save</button>-->
+<!--</form>-->
+
+
+<a href="/contact/create">Create Contact</a>
+</body>
+
+</html>
